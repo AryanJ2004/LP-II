@@ -18,14 +18,14 @@ void printBoard(vector<vector<char>> board) {
 
 bool isSafe(vector<vector<char>> board, int row, int col) {
     int n = board.size();
-    //vertical
+    //horizental
     for(int j=0; j<col; j++) {
         if(board[row][j] == 'Q') {
             return false;
         }
     }
 
-    //horizontal
+    //verticle
     for(int i=0; i<row; i++) {
         if(board[i][col] == 'Q') {
             return false;
@@ -49,24 +49,24 @@ bool isSafe(vector<vector<char>> board, int row, int col) {
 }
 
 
-int nQueens(vector<vector<char>> board, int row) {
+void nQueens(vector<vector<char>> board, int row) {
     int n = board.size();
     if(row == n) {
         printBoard(board);
-        return 1;
+        return;
+
     }
 
-    // int count = 0;
+
     for(int j=0; j<n; j++) {
         if(isSafe(board, row, j)) {
             board[row][j] = 'Q';
-            // count += 
             nQueens(board, row+1);
             board[row][j] = '.';
         }
     }
+    
 
-    // return count;
 }
 
 int main(){
